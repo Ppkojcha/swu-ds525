@@ -6,13 +6,6 @@ from typing import List
 import psycopg2
 
 
-table_insert = """
-    INSERT INTO users (
-        xxx
-    ) VALUES (%s)
-    ON CONFLICT (xxx) DO NOTHING
-"""
-
 
 def get_files(filepath: str) -> List[str]:
     """
@@ -42,7 +35,39 @@ def process(cur, conn, filepath):
                 # Print some sample data
                 print(each["id"], each["type"], each["actor"]["login"])
 
-                # Insert data into tables here
+                # Insert data into tables 
+                insert_statement_actor = f"""
+                    INSERT INTO Actors (id,login,display_login) 
+                    VALUES ('{each["actor"]["id"]}'
+                              ,'{each["actor"]["login"]}'
+                              ,'{each["actor"]["display_login"]}')
+                    ON CONFLICT (id) DO NOTHING
+                """
+                cur.execute(insert_statement_actor)
+                
+
+                # Insert data into tables 
+                insert_statement_events = f"""
+                    INSERT INTO Events (id,type,actor_id,repo_id)
+                    VALUES ('{each["id"]},'
+                            ,'{each["type"]}'
+                            ,'{each["actor"]["id"]}'                    
+                            ,'{each["repo"]["id"]}')
+                    ON CONFLICT (id) DO NOTHING
+                """
+                cur.execute(insert_statement_events)
+                
+
+                # Insert data into tables 
+                insert_statement_repo = f"""
+                    INSERT INTO Repo (id,name,url)
+                    VALUES ('{each["repo"]["id"]}'
+                            ,'{each["repo"]["name"]}'
+                            ,'{each["repo"]["url"]}')
+                    ON CONFLICT (id) DO NOTHING
+                """
+                cur.execute(insert_statement_repo)
+                conn.commit()
 
 
 def main():
