@@ -1,93 +1,89 @@
-import glob
-import json
-import os
-from typing import List
 
 import psycopg2
 
 
-table_insert = """
-    INSERT INTO users (
-        xxx
-    ) VALUES (%s)
-    ON CONFLICT (xxx) DO NOTHING
+
+table_drop_events = "DROP TABLE IF EXISTS Events"
+table_drop_actors = "DROP TABLE IF EXISTS Actors"
+table_drop_repo = "DROP TABLE IF EXISTS Repo"
+
+
+table_create_actors = """
+    CREATE TABLE IF NOT EXISTS Actors (
+        id int,
+        login text,
+        display_login text,
+        PRIMARY KEY(id)
+    )
+"""
+table_create_events = """
+    CREATE TABLE IF NOT EXISTS Events (
+        id text,
+        type text,
+        actor_id int,
+        repo_id int,
+        PRIMARY KEY(id),
+        CONSTRAINT fk_actor FOREIGN KEY(actor_id) REFERENCES actors(id)
+
+    )
+"""
+table_create_repo = """
+    CREATE TABLE IF NOT EXISTS Repo (
+        id int,
+        name text,
+        url text,
+        PRIMARY KEY(id)
+    )
 """
 
+create_table_queries = [
+    table_create_actors,
+    table_create_events,
+    table_create_repo,
+    
+]
+drop_table_queries = [
+    table_drop_events,
+    table_drop_actors,
+    table_drop_repo,
+    
+]
 
-def get_files(filepath: str) -> List[str]:
+
+def drop_tables(cur, conn) -> None:
     """
-    Description: This function is responsible for listing the files in a directory
+    Drops each table using the queries in `drop_table_queries` list.
     """
-
-    all_files = []
-    for root, dirs, files in os.walk(filepath):
-        files = glob.glob(os.path.join(root, "*.json"))
-        for f in files:
-            all_files.append(os.path.abspath(f))
-
-    num_files = len(all_files)
-    print(f"{num_files} files found in {filepath}")
-
-    return all_files
+    for query in drop_table_queries:
+        cur.execute(query)
+        conn.commit()
 
 
-def process(cur, conn, filepath):
-    # Get list of files from filepath
-    all_files = get_files(filepath)
-
-    for datafile in all_files:
-        with open(datafile, "r") as f:
-            data = json.loads(f.read())
-            for each in data:
-                # Print some sample data
-                print(each["id"], each["type"], each["actor"]["login"])
-
-                # Insert data into tables here
-                insert_statement_actor = f"""
-                    INSERT INTO Actors (id,login,display_login) 
-                    VALUES ('{each["actor"]["id"]}'
-                              ,'{each["actor"]["login"]}'
-                              ,'{each["actor"]["display_login"]}')
-                    ON CONFLICT (id) DO NOTHING
-                """
-                cur.execute(insert_statement_actor)
-                
-
-                # Insert data into tables here
-                insert_statement_events = f"""
-                    INSERT INTO Events (id,type,actor_id,repo_id)
-                    VALUES ('{each["id"]},'
-                            ,'{each["type"]}'
-                            ,'{each["actor"]["id"]}'                    
-                            ,'{each["repo"]["id"]}')
-                    ON CONFLICT (id) DO NOTHING
-                """
-                # print(insert_statement)
-                cur.execute(insert_statement_events)
-                
-
-                # Insert data into tables here
-                insert_statement_repo = f"""
-                    INSERT INTO Repo (id,name,url)
-                    VALUES ('{each["repo"]["id"]}'
-                            ,'{each["repo"]["name"]}'
-                            ,'{each["repo"]["url"]}')
-                    ON CONFLICT (id) DO NOTHING
-                """
-                # print(insert_statement)
-                cur.execute(insert_statement_repo)
-                conn.commit()
-
-                
+def create_tables(cur, conn) -> None:
+    """
+    Creates each table using the queries in `create_table_queries` list.
+    """
+    for query in create_table_queries:
+        cur.execute(query)
+        conn.commit()
 
 
 def main():
+    """
+    - Drops (if exists) and Creates the sparkify database.
+    - Establishes connection with the sparkify database and gets
+    cursor to it.
+    - Drops all the tables.
+    - Creates all tables needed.
+    - Finally, closes the connection.
+    """
     conn = psycopg2.connect(
         "host=127.0.0.1 dbname=postgres user=postgres password=postgres"
     )
     cur = conn.cursor()
 
-    process(cur, conn, filepath="../data")
+    drop_tables(cur, conn)
+    create_tables(cur, conn)
 
     conn.close()
 
