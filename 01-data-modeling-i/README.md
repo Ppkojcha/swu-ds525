@@ -1,6 +1,10 @@
 # Data Modeling I
 
-##Command Line for Data Modeling I
+![ERdiagram](https://user-images.githubusercontent.com/111840507/190895168-3456cd37-5502-4541-ac8b-d41cc50bedcd.jpg)
+
+
+# Command Line for Data Modeling I
+
 ## Getting Started
 
 
