@@ -5,7 +5,7 @@
 
 Change Directory
 ```sh
-cd 02-data-modeling-i/
+cd 02-data-modeling-ii/
 ```
 
 For Create Virtual Environment:
