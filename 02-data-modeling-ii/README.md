@@ -1,5 +1,7 @@
 # Command Line for Data Modeling II
 
+![ER2](https://user-images.githubusercontent.com/111840507/193453936-91b09ad1-3afc-4ff9-bc64-88211423fab1.jpg)
+
 ## Getting Started
 
 
