@@ -11,3 +11,41 @@ sudo chmod 777 .
 ```sh
 docker-compose up
 ```
+# Command Line for Building a Data Lake
+
+## Getting Started
+
+
+Change Directory
+```sh
+cd 04-building-a-data-lake/workshop
+```
+
+
+For Mac users:
+
+```sh
+brew install postgresql
+```
+
+## Postgres
+
+For Running Postgres
+```sh
+docker-compose up
+```
+
+```
+
+For Clear Terminal
+```sh
+clear
+```
+
+To shutdown, press Ctrl+C and run:
+
+```sh
+docker-compose down
+```
+
+
