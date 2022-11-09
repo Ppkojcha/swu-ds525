@@ -27,7 +27,6 @@ For Running docker
 docker-compose up
 ```
 
-```
 
 For Clear Terminal
 ```sh
