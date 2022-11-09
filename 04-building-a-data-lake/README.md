@@ -22,15 +22,7 @@ cd 04-building-a-data-lake/workshop
 ```
 
 
-For Mac users:
-
-```sh
-brew install postgresql
-```
-
-## Postgres
-
-For Running Postgres
+For Running docker
 ```sh
 docker-compose up
 ```
