@@ -50,4 +50,21 @@ Open URL and Token
 ![token1](https://user-images.githubusercontent.com/111840507/201709986-4c18ad03-76e6-45a7-ae34-69e0608e186a.jpg)
 
 
+#  Partition
+![partition](https://user-images.githubusercontent.com/111840507/201712376-0f9bc957-e15f-4d04-be15-4beb2b7e9f62.jpg)
+
+
+# Create table actors PartitionBy ("year")
+![actor](https://user-images.githubusercontent.com/111840507/201712504-033dade7-06c9-4d1a-b254-fb151625dd91.jpg)
+![actor1](https://user-images.githubusercontent.com/111840507/201712536-6cd85ef7-1764-4fee-980b-8f978bdef8e0.jpg)
+
+
+
+# Create table events PartitionBy ("month")
+![event](https://user-images.githubusercontent.com/111840507/201712888-0789db8b-3caa-4565-9e4f-a2a01b33f6d9.jpg)
+![event1](https://user-images.githubusercontent.com/111840507/201712882-4eee5274-f9cc-4ac4-ab7b-4f4e892465f5.jpg)
+
+# Create table repos PartitionBy ("month")
+![repo](https://user-images.githubusercontent.com/111840507/201712873-874d66fa-bdca-4cd1-9e92-4fdec9f75ada.jpg)
+![repo1](https://user-images.githubusercontent.com/111840507/201712890-5df513df-cb72-447a-959c-6d6397f62424.jpg)
 
