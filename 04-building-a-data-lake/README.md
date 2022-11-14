@@ -43,3 +43,11 @@ docker-compose down
 ```
 
 
+
+Open URL and Token 
+
+![token](https://user-images.githubusercontent.com/111840507/201709805-63c79099-b9c7-47df-989d-0e34d48a00f1.jpg)
+![token1](https://user-images.githubusercontent.com/111840507/201709986-4c18ad03-76e6-45a7-ae34-69e0608e186a.jpg)
+
+
+
