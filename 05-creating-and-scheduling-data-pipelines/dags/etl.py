@@ -31,13 +31,16 @@ def _create_tables():
     conn = hook.get_conn()
     cur = conn.cursor()
 
+    
     table_create_actors = """
-        CREATE TABLE IF NOT EXISTS actors (
+        CREATE TABLE IF NOT EXISTS Actors (
             id int,
             login text,
+            display_login text,
             PRIMARY KEY(id)
         )
     """
+
     table_create_events = """
         CREATE TABLE IF NOT EXISTS events (
             id text,
@@ -47,10 +50,20 @@ def _create_tables():
             CONSTRAINT fk_actor FOREIGN KEY(actor_id) REFERENCES actors(id)
         )
     """
+    table_create_repo = """
+        CREATE TABLE IF NOT EXISTS Repo (
+            id int,
+            name text,
+            url text,
+            PRIMARY KEY(id)
+        )
+    """
     create_table_queries = [
         table_create_actors,
         table_create_events,
-    ]
+        table_create_repo,
+]
+
     for query in create_table_queries:
         cur.execute(query)
         conn.commit()
@@ -96,28 +109,36 @@ def _process(**context):
                     )
 
                 # Insert data into tables here
-                insert_statement = f"""
-                    INSERT INTO actors (
-                        id,
-                        login
-                    ) VALUES ({each["actor"]["id"]}, '{each["actor"]["login"]}')
+                insert_statement_actor = f"""
+                    INSERT INTO Actors (id,login,display_login)
+                    VALUES ('{each["actor"]["id"]}'
+                              ,'{each["actor"]["login"]}'
+                              ,'{each["actor"]["display_login"]}')
+                    ON CONFLICT (id) DO NOTHING
+                """
+                cur.execute(insert_statement_actor)    
+                
+                # Insert data into tables here
+                insert_statement_events = f"""
+                    INSERT INTO Events (id,type,actor_id,repo_id)
+                    VALUES ('{each["id"]},'
+                            ,'{each["type"]}'
+                            ,'{each["actor"]["id"]}'                    
+                            ,'{each["repo"]["id"]}')
                     ON CONFLICT (id) DO NOTHING
                 """
                 # print(insert_statement)
-                cur.execute(insert_statement)
+                cur.execute(insert_statement_events)
 
                 # Insert data into tables here
-                insert_statement = f"""
-                    INSERT INTO events (
-                        id,
-                        type,
-                        actor_id
-                    ) VALUES ('{each["id"]}', '{each["type"]}', '{each["actor"]["id"]}')
+                insert_statement_repo = f"""
+                    INSERT INTO Repo (id,name,url)
+                    VALUES ('{each["repo"]["id"]}'
+                            ,'{each["repo"]["name"]}'
+                            ,'{each["repo"]["url"]}')
                     ON CONFLICT (id) DO NOTHING
                 """
-                # print(insert_statement)
-                cur.execute(insert_statement)
-
+                cur.execute(insert_statement_repo)
                 conn.commit()
 
 
