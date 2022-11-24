@@ -82,17 +82,30 @@ dbt debug
 
 ## To create models
 
+![image](https://user-images.githubusercontent.com/111840507/203827132-ed6356c9-ec0c-4715-b3c5-140880ead22b.png)
 ```sh
 dbt run
 ```
 
-To test models
+## To test models
 
 ```sh
 dbt test
 ```
+![image](https://user-images.githubusercontent.com/111840507/203827319-c9e95d6c-956f-47cd-8dbe-775ccbdc866d.png)
+![image](https://user-images.githubusercontent.com/111840507/203827341-171967cb-fd67-4baa-87dc-79e479eb1304.png)
 
-To view docs (on Gitpod)
+## Open SQL  URL (port 3000)
+![image](https://user-images.githubusercontent.com/111840507/203827797-12eb562e-3350-4c99-8111-240d76bb21c8.png)
+
+## Example Select SQL
+![image](https://user-images.githubusercontent.com/111840507/203828527-477c71a0-1264-4a29-94f6-86a7f8d478b9.png)
+
+1. ![image](https://user-images.githubusercontent.com/111840507/203828602-d816110f-4a8b-4436-82df-738184a423ad.png)
+
+2. ![image](https://user-images.githubusercontent.com/111840507/203828684-69d41562-c6c3-419f-8064-778d6968e933.png)
+
+## To view docs (on Gitpod)
 
 ```sh
 dbt docs generate
