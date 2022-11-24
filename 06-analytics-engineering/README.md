@@ -1,47 +1,54 @@
 # Analytics Engineering
 
-## Getting Started
+## Getting Started เริ่มต้น
 
 
-## Change Directory
+## Change Directory เข้า Folder 06-analythics-engineering
+
 ```sh
 cd 06-analytics-engineering
 ```
 
-## For Create Virtual Environment:
+## For Create Virtual Environment: สร้าง Environment 
+
 ```sh
 python -m venv ENV
 ```
 
-## For Activate Virtual Environment:
+## For Activate Virtual Environment: เข้าสู่ ENV Environment
+
 ```sh
 source ENV/bin/activate
 ```
 
-## For Install Package 
+## For Install Package ติดตั้ง Package ที่จำเป็นในไฟล์ Requirements.txt
+
 ```sh
 pip install -r requirements.txt
 ```
 
 
 
-## Create a dbt project
+## Create a dbt project 
 
-![image](https://user-images.githubusercontent.com/111840507/203825997-5565d756-395e-46d1-804a-0466b4692103.png)
 ```sh
 dbt init
 ```
+![image](https://user-images.githubusercontent.com/111840507/203825997-5565d756-395e-46d1-804a-0466b4692103.png)
+
+## ระบบจะให้ใส่ชื่อของ Project ในที่นี้ ใส่เป็น Jaffle  และถามถึง Database ที่จะใช้ 
+
 
 ## Edit the dbt profiles
-![image](https://user-images.githubusercontent.com/111840507/203826330-a8fe506a-1d0d-4d99-aeda-8da422f22a8e.png)
 
 ```sh
 code ~/.dbt/profiles.yml
 ```
 
-## DBT Profiles
+![image](https://user-images.githubusercontent.com/111840507/203826330-a8fe506a-1d0d-4d99-aeda-8da422f22a8e.png)
+## เมื่อ RUN CODE ด้านบน จะPOP UP File Profiles.yml ขึ้นมา ให้แก้ไขดังนี้
 
-![image](https://user-images.githubusercontent.com/111840507/203826356-2be05863-4183-4465-9fc0-905631b989db.png)
+# FOR dbt Profiles
 
 ```yml
 jaffle:
@@ -69,23 +76,31 @@ jaffle:
 
   target: dev
 ```
+![image](https://user-images.githubusercontent.com/111840507/203826356-2be05863-4183-4465-9fc0-905631b989db.png)
 
-## Test dbt connection
 
+## Test dbt connection ตรวจสอบ Connection
+
+## โดย เข้า Change Directory เข้า Folder Jaffle แล้ว ตามด้วย CODE 
 ```sh
 cd jaffle
 dbt debug
 ```
 
+
 ## You should see "All checks passed!".
+## หาก Connection เรียบร้อยจะขึ้น "All checks passed!"
 ![image](https://user-images.githubusercontent.com/111840507/203826777-ac9bd40d-2698-4c2e-bdb1-64ce7f781e51.png)
 
-## To create models
 
-![image](https://user-images.githubusercontent.com/111840507/203827132-ed6356c9-ec0c-4715-b3c5-140880ead22b.png)
+## To create models
+## สร้าง MODEL เมื่อ
+
 ```sh
 dbt run
 ```
+![image](https://user-images.githubusercontent.com/111840507/203827132-ed6356c9-ec0c-4715-b3c5-140880ead22b.png)
+
 
 ## To test models
 
