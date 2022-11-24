@@ -48,7 +48,7 @@ code ~/.dbt/profiles.yml
 ![image](https://user-images.githubusercontent.com/111840507/203826330-a8fe506a-1d0d-4d99-aeda-8da422f22a8e.png)
 ## เมื่อ RUN CODE ด้านบน จะPOP UP File Profiles.yml ขึ้นมา ให้แก้ไขดังนี้
 
-# FOR dbt Profiles
+## FOR dbt Profiles
 
 ```yml
 jaffle:
@@ -81,7 +81,7 @@ jaffle:
 
 ## Test dbt connection ตรวจสอบ Connection
 
-## โดย เข้า Change Directory เข้า Folder Jaffle แล้ว ตามด้วย CODE 
+## โดย เข้า Change Directory เข้า Folder Jaffle แล้ว ตามด้วย CODE dbt debug
 ```sh
 cd jaffle
 dbt debug
@@ -94,11 +94,13 @@ dbt debug
 
 
 ## To create models
-## สร้าง MODEL เมื่อ
-
+## เมื่อเขียน CODE สร้าง MODEL ที่ต้องการเรียบร้อย ให้สั่ง dbt run
+## ตัวอย่าง สร้าง Model ที่เอาเฉพาะ ที่มี status  " COMPLETED"  ใน jaffle_shop_orders  
 ```sh
 dbt run
 ```
+![image](https://user-images.githubusercontent.com/111840507/203832605-6cd224ce-1f47-44e6-80b2-4d63dfdc14b0.png)
+
 ![image](https://user-images.githubusercontent.com/111840507/203827132-ed6356c9-ec0c-4715-b3c5-140880ead22b.png)
 
 
@@ -107,18 +109,28 @@ dbt run
 ```sh
 dbt test
 ```
+
 ![image](https://user-images.githubusercontent.com/111840507/203827319-c9e95d6c-956f-47cd-8dbe-775ccbdc866d.png)
 ![image](https://user-images.githubusercontent.com/111840507/203827341-171967cb-fd67-4baa-87dc-79e479eb1304.png)
 
+
 ## Open SQL  URL (port 3000)
+## จะพบข้อมูลที่เราสร้างขึ้นไว้
+
 ![image](https://user-images.githubusercontent.com/111840507/203827797-12eb562e-3350-4c99-8111-240d76bb21c8.png)
 
 ## Example Select SQL
+## ตัวอย่างการ Select Data
+
+## 1. ตัวอย่าง การเลือกจาก Jaffle_shop_customer
+
 ![image](https://user-images.githubusercontent.com/111840507/203828527-477c71a0-1264-4a29-94f6-86a7f8d478b9.png)
 
-1. ![image](https://user-images.githubusercontent.com/111840507/203828602-d816110f-4a8b-4436-82df-738184a423ad.png)
+## 2. ตัวอย่าง การเลือกจาก Model ที่สร้าง completed_orders  ก็จะปรากฏเฉพาะ Order ที่มี Status "Completed"
+![image](https://user-images.githubusercontent.com/111840507/203828602-d816110f-4a8b-4436-82df-738184a423ad.png)
 
-2. ![image](https://user-images.githubusercontent.com/111840507/203828684-69d41562-c6c3-419f-8064-778d6968e933.png)
+## 3. ลอง  Joint Table โดย รวม Jaffles Orders กับ Jaffles customer 
+![image](https://user-images.githubusercontent.com/111840507/203828684-69d41562-c6c3-419f-8064-778d6968e933.png)
 
 ## To view docs (on Gitpod)
 
@@ -126,3 +138,14 @@ dbt test
 dbt docs generate
 dbt docs serve
 ```
+## For Clear Terminal
+```sh
+clear
+```
+
+## To shutdown, press Ctrl+C and run:
+
+```sh
+docker-compose down
+```
+
