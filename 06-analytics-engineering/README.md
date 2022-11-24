@@ -1,7 +1,32 @@
 # Analytics Engineering
 
-Create a dbt project
+## Getting Started
 
+
+Change Directory
+```sh
+cd 06-analytics-engineering
+```
+
+For Create Virtual Environment:
+```sh
+python -m venv ENV
+```
+
+For Activate Virtual Environment:
+```sh
+source ENV/bin/activate
+```
+
+For Install Package 
+```sh
+pip install -r requirements.txt
+```
+
+
+
+Create a dbt project
+![image](https://user-images.githubusercontent.com/111840507/203825997-5565d756-395e-46d1-804a-0466b4692103.png)
 ```sh
 dbt init
 ```
