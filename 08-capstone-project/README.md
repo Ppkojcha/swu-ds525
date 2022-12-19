@@ -47,7 +47,7 @@ $ cat ~/.aws/credentials
 
 - Copy "**Endpoint**" and ข้อมูล Cluster  เพื่อที่จะอัพเดตใน Redshift credential
 
-![redshiftEndpoint](document/redshiftEndpoint.png)
+
 
 <br>
 
@@ -91,12 +91,6 @@ docker-compose up
 > - Username: "airflow"<br>
 > - Password: "airflow"<br>
 
--  Datawarehouse จะรัน schedule configuration
-> - Schedule: "Monthly" (วันที่1 ของเดือน)<br>
-> - Start date: "1st December 2022"
-
-
-
 - ข้อมูลบน Datawarehouse จะถูกโหลด เข้าสู่  Redshift 
 ```sh
 select * from customer;
@@ -109,7 +103,7 @@ select * from customer;
 ![image](https://user-images.githubusercontent.com/111840507/208483805-2bf94c71-d30b-4197-8387-5989a5ffe041.png)
 
 <br>
-__________
+
 <br>
 
 ## Shutdown 
