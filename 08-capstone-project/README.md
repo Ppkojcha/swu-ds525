@@ -1,6 +1,6 @@
 # Capstone Project Kojcharat Narupatpajong 64199130032
 
-## Data model (Datalake)
+## Data model 
 ![image](https://user-images.githubusercontent.com/111840507/208472009-2328bcae-0a24-4740-82dc-4ccac958f187.png)
 <br>
 
