@@ -8,9 +8,14 @@
 ![image](https://user-images.githubusercontent.com/111840507/208472125-464ef7e9-ca55-43f3-bcbd-39576ffb3547.png)
 <br>
 
-## Project implementation instruction
+## Project instruction
+
+[Project instruction 64199130032.pdf](https://github.com/Ppkojcha/swu-ds525/files/10270046/Project.instruction.64199130032.pdf)
 <br>
 
+## Project presentation
+[store sales.pdf](https://github.com/Ppkojcha/swu-ds525/files/10270023/store.sales.pdf)
+<br>
 ### 1. Change directory to project **"08-capstone-project"**:
 ```sh
 $ cd 08-capstone-project
